@@ -65,19 +65,10 @@ ansible-playbook \
   deploy-pravega-all-in-one.yaml
 ```
 
-## Deploy Milvus
-
-We can deploy Milvus using the following command:
-
-``` bash
-ansible-playbook \
-  --inventory `which terraform-inventory` \
-  deploy-milvus.yaml
-```
 
 ## Deploy the benchmark
 
-We can deploy the benchmark code using the following command:
+We can deploy the remaining of the setup using the following command:
 
 ``` bash
 ansible-playbook \
