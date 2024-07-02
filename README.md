@@ -1,6 +1,8 @@
 ## To start/stop pravega
 
-Please install docker & docker-compose as prerequisite and run the following commands on Linux host to start/stop pravega instance.
+This shows how to start the local Docker Compose version of Pravega. For other types of deployments, refer to [here](https://github.com/pravega/pravega/blob/master/documentation/src/docs/deployment/deployment.md).
+
+Please install docker & docker-compose as prerequisite and run the following commands on Linux host to start/stop pravega instance. 
 
 Start pravega:
 ```
@@ -34,7 +36,7 @@ Delete Milvus
 bash standalone_embed.sh delete
 ```
 
-To start the ATTU GUI. This is a browser interface to easily manage the collections (optional):
+To start the ATTU GUI. This is a browser interface to easily manage the Milvus collections and indexes (optional):
 ```
 docker run -p 8000:3000 -e MILVUS_URL=172.17.0.1:19530 zilliz/attu:v2.3.10
 ```
