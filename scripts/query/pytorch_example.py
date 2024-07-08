@@ -23,7 +23,7 @@ from policies.components import get_model, inference
 from index_utils import search, search_global
 
 
-class S3Dataset(Dataset):
+class VectorDataset(Dataset):
     def __init__(self, milvus, embedding, global_k, global_accuracy, global_f, local_k, fragment_offset, accuracy, result_path, frame_path, parallelism_candidates, parallelism_exports):
         # Search Global Index for candidates
         candidates, _ = search_global("global", embedding.detach().numpy(), ["collection"], int(global_k), float(global_accuracy), global_f)
@@ -55,7 +55,8 @@ class S3Dataset(Dataset):
         # Save individual images on disk
         self.frame_path = frame_path # Path to store the frame .jpgs
         frame_count = 0
-        for file in self.file_list:
+        print("Generating dataset...")
+        for file in fragments:
             cap = cv2.VideoCapture(f"{result_path}/{file}")
             while True:
                 ret, frame = cap.read()
@@ -86,13 +87,15 @@ def main():
     parser.add_argument('--accuracy', default=0.9)
     parser.add_argument('--log_path', default=LOG_PATH)
     parser.add_argument('--result_path', default=RESULT_PATH)
-    parser.add_argument('--frame_path', default=RESULT_PATH)
+    parser.add_argument('--frame_path', default=f"{RESULT_PATH}/frames")
     parser.add_argument('--parallelism_candidates', default=3)
     parser.add_argument('--parallelism_exports', default=3)
     args = parser.parse_args()
     
     result_path = args.result_path
     os.makedirs(result_path, exist_ok=True)
+    frame_path = args.frame_path
+    os.makedirs(frame_path, exist_ok=True)
     
     ## Connect to Milvus
     print("Connecting to Milvus")
@@ -108,7 +111,7 @@ def main():
     embedding = inference(model, img, device)
 
     ## Create the dataset and dataloader
-    dataset = S3Dataset(
+    dataset = VectorDataset(
         milvus=client,
         embedding=embedding,
         global_k=args.global_k,
@@ -120,13 +123,21 @@ def main():
         result_path=args.result_path,
         parallelism_candidates=args.parallelism_candidates,
         parallelism_exports=args.parallelism_exports,
-        frame_path=args.frame_path
+        frame_path=frame_path
     )
-    dataloader = DataLoader(dataset, batch_size=20, shuffle=True)
+    dataloader = DataLoader(dataset, batch_size=5, shuffle=True)
 
     ## Example use
-    for batch in dataloader:
-        print(batch.shape)
+    for idx, batch in enumerate(dataloader):
+        print(f"Batch {idx} with shape: {batch.shape}")
+        last = batch
+        
+    # Display last batch in separate window
+    for idx, img in enumerate(last):
+        # Save to disk
+        img = Image.fromarray(np.array(img, dtype=np.uint8))
+        img.save(f"{result_path}/last_frame_{idx}.jpg")
+    
         
 if __name__ == "__main__":
     main()
