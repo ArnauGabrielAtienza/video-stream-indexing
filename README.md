@@ -104,4 +104,7 @@ vlc <stream_name>.h264 --demux h264
 
 # Video Demo
 
-https://github.com/ArnauGabrielAtienza/video-stream-indexing/raw/main/media/demo.mp4
+<video width="600" controls>
+  <source src="https://github.com/ArnauGabrielAtienza/video-stream-indexing/raw/main/media/demo.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
