@@ -24,6 +24,12 @@ commands = [
     )
 ]
 
+# Define GPU resource requirements
+#resources = client.V1ResourceRequirements(
+#    requests={"nvidia.com/gpu": "1"},  # Request 1 GPU
+#    limits={"nvidia.com/gpu": "1"}     # Limit 1 GPU
+#)
+
 # Define the pod specification
 pod_spec = client.V1Pod(
     metadata=client.V1ObjectMeta(name="inference-pod"),
@@ -35,9 +41,10 @@ pod_spec = client.V1Pod(
                 command=["/bin/bash"],
                 args=commands,
                 working_dir="/project",
+                #resources=resources,
             )
         ],
-        restart_policy="Never",  # Note the use of snake_case here
+        restart_policy="Never",
         host_network=True,
     )
 )
