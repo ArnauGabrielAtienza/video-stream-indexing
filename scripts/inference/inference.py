@@ -195,6 +195,9 @@ def main():
     parser.add_argument('--log_level', type=int, default=logging.INFO, help='10=DEBUG,20=INFO')
     parser.add_argument('--stream', default='urv6')
     parser.add_argument('--log_path', default=LOG_PATH)
+    parser.add_argument('--milvus_host', default=MILVUS_HOST)
+    parser.add_argument('--milvus_port', default=MILVUS_PORT)
+    parser.add_argument('--milvus_namespace', default=MILVUS_NAMESPACE)
     args = parser.parse_args()
 
     logging.basicConfig(level=args.log_level)
@@ -233,7 +236,7 @@ def main():
     model, device = get_model()
     
     # Connect to Milvus and initialize collections
-    connections.connect(MILVUS_NAMESPACE, host=MILVUS_HOST, port=MILVUS_PORT)
+    connections.connect(args.milvus_namespace, host=args.milvus_host, port=args.milvus_port)
     milvus_collection = init_collection(args.stream)
     milvus_global_collection = init_global_collection()
 
