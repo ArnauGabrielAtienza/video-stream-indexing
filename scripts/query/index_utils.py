@@ -44,11 +44,11 @@ def search_global(collection_name, embedding, fields, k, accuracy, f):
     filter2 = time.time()
     
     # Print query times
-    print(f"Collection: {collection_con - start}")
-    print(f"Load: {col_load - collection_con}")
-    print(f"Search: {search_time - col_load}")
-    print(f"Filter1: {filter1 - search_time}")
-    print(f"Filter2: {filter2 - filter1}")
+    #print(f"Collection: {collection_con - start}")
+    #print(f"Load: {col_load - collection_con}")
+    #print(f"Search: {search_time - col_load}")
+    #print(f"Filter1: {filter1 - search_time}")
+    #print(f"Filter2: {filter2 - filter1}")
     
     search_times = {
         "collection": collection_con - start,
