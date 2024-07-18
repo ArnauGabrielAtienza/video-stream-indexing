@@ -1,3 +1,7 @@
+"""
+In order to ensure correct execution of this script, please move it to '/streamsense/query/'
+"""
+
 import os
 import sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
