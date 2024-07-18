@@ -10,48 +10,11 @@ While everything can be run on the same machine, we recommend the following 4 ma
 * 1 VM with GPU to perform the inference.
 * 1 VM to read the surgery video. 
 
-## Pravega Installation
+## Installation
 
-This shows how to start the local Docker Compose version of Pravega. For other types of deployments, refer to [here](https://github.com/pravega/pravega/blob/master/documentation/src/docs/deployment/deployment.md).
+In order to deploy the environment to run this project, plase refer to ['/deploy'](https://github.com/pravega/pravega/blob/master/documentation/src/docs/deployment/deployment.md).
 
-Please install docker & docker-compose as prerequisite and run the following commands on Linux host to start/stop pravega instance. 
-
-Start pravega:
-```
-PRAVEGA_LTS_PATH=/opt/docker/pravega_lts ./pravega-docker/up.sh
-```
-
-Stop pravega:
-```
-./pravega-docker/down.sh
-```
-
-## Milvus Installation
-
-Install Milvus
-```
-wget https://raw.githubusercontent.com/milvus-io/milvus/master/scripts/standalone_embed.sh
-```
-
-Start Milvus
-```
-bash standalone_embed.sh start
-```
-
-Stop Milvus
-```
-bash standalone_embed.sh stop
-```
-
-Delete Milvus
-```
-bash standalone_embed.sh delete
-```
-
-To start the ATTU GUI. This is a browser interface to easily manage the Milvus collections and indexes (optional):
-```
-docker run -p 8000:3000 -e MILVUS_URL=172.17.0.1:19530 zilliz/attu:v2.3.10
-```
+Alternatively, to deploy it in a local environment, plase refer to ['/deploy/local'](https://github.com/pravega/pravega/blob/master/documentation/src/docs/deployment/deployment.md).
 
 # Instructions
 ### 1. Start docker container
