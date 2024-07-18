@@ -1,6 +1,6 @@
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from pymilvus import (
     Collection,
@@ -64,7 +64,7 @@ def search_global(collection_name, embedding, fields, k, accuracy, f):
 def process_offset(idx, off_start, off_end, collection_name, result_path, env):
     """Export a video fragment from Pravega"""
     filename = f"{collection_name}_{idx}_{off_start}_{off_end}.h264"
-    subprocess.run(['bash', '/project/scripts/query/export.sh', collection_name, f"{result_path}/{filename}", off_start, off_end], 
+    subprocess.run(['bash', '/project/streamsense/query/export.sh', collection_name, f"{result_path}/{filename}", off_start, off_end], 
                     env=env, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     gb_retrieved = os.path.getsize(f"{result_path}/{filename}") / (1024 ** 3)
     return filename, gb_retrieved

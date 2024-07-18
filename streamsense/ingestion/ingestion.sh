@@ -20,7 +20,7 @@ FILESRC_PATH="$1"
 PRAVEGA_STREAM="$2"
 FPS="$3"
 
-eval "$(python3 /project/policies/constants.py)"
+eval "$(python3 /project/streamsense/policies/constants.py)"
 ROOT_DIR=/gstreamer-pravega
 pushd ${ROOT_DIR}/gst-plugin-pravega
 export GST_PLUGIN_PATH=${ROOT_DIR}/target/debug:${GST_PLUGIN_PATH}

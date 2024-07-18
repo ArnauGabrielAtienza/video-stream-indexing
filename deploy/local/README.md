@@ -4,12 +4,12 @@ Please install docker & docker-compose as prerequisite and run the following com
 
 Start pravega:
 ```
-PRAVEGA_LTS_PATH=/opt/docker/pravega_lts ./pravega-docker/up.sh
+PRAVEGA_LTS_PATH=/opt/docker/pravega_lts ./up.sh
 ```
 
 Stop pravega:
 ```
-./pravega-docker/down.sh
+./down.sh
 ```
 
 ## Milvus Installation

@@ -21,7 +21,7 @@ FILE_NAME="$2"
 BEGIN_OFFSET="$3"
 END_OFFSET="$4"
 
-eval "$(python3 /project/policies/constants.py)"
+eval "$(python3 /project/streamsense/policies/constants.py)"
 ROOT_DIR=/gstreamer-pravega
 pushd ${ROOT_DIR}/apps
 export RUST_BACKTRACE=1

@@ -28,13 +28,13 @@ docker run -it -v /{path-to-repo}/video-stream-indexing/:/project --net=host --e
 ### 2. Video Ingestion
 Perform a simulation o a real surgery by reading a local mp4 file and sending it as a stream to Pravega. This process should run on the VM that reads the surgery video.
 ```
-cd /project/scripts/ingestion
+cd /project/streamsense/ingestion
 bash ingestion.sh /project/videos/<video_name>.mp4 <stream_name> <fps>
 ```
 
 Display pravega stream to screen (optional):
 ```
-cd /project/scripts/ingestion
+cd /project/streamsense/ingestion
 bash read.sh <stream_name>
 ```
 
@@ -42,7 +42,7 @@ bash read.sh <stream_name>
 Read the previously created stream, generate the embeddings from the key frames and send them to Milvus. This process should run on the VM with GPU support.
 
 ```
-cd /project/scripts/inference
+cd /project/streamsense/inference
 GST_PLUGIN_PATH=/gstreamer-pravega/target/debug:${GST_PLUGIN_PATH} python3 inference.py --stream <stream_name>
 ```
 
@@ -50,13 +50,13 @@ GST_PLUGIN_PATH=/gstreamer-pravega/target/debug:${GST_PLUGIN_PATH} python3 infer
 
 Perform a query to our system by giving a sample image. This process can run on any VM, but it is recommended to run on the node with GPU support.
 ```
-cd /project/scripts/query
+cd /project/streamsense/query
 python3 milvus_demo.py
 ```
 
 To run the PyTorch/DataLoader example:
 ```
-cd /project/scripts/query
+cd /project/streamsense/query
 python3 pytorch_example.py
 ```
 

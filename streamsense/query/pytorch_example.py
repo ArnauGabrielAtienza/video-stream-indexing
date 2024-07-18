@@ -4,7 +4,7 @@ In order to ensure correct execution of this script, please move it to '/streams
 
 import os
 import sys
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '../..')))
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 from pymilvus import (
     connections,
@@ -88,7 +88,7 @@ def main():
     parser.add_argument('--fragment_offset', default=5)
     parser.add_argument('--global_accuracy', default=0.0)
     parser.add_argument('--global_f', default=20)
-    parser.add_argument('--accuracy', default=0.9)
+    parser.add_argument('--accuracy', default=0.8)
     parser.add_argument('--log_path', default=LOG_PATH)
     parser.add_argument('--result_path', default=RESULT_PATH)
     parser.add_argument('--frame_path', default=f"{RESULT_PATH}/frames")
