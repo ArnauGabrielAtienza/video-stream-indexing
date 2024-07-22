@@ -12,9 +12,9 @@ While everything can be run on the same machine, we recommend the following 4 ma
 
 ## Installation
 
-In order to deploy the environment to run this project, plase refer to ['/deploy'](https://github.com/pravega/pravega/blob/master/documentation/src/docs/deployment/deployment.md).
+In order to deploy the environment to run this project, plase refer to ['/deploy'](https://github.com/neardata-eu/video-stream-indexing/tree/main/deploy/README.md).
 
-Alternatively, to deploy it in a local environment, plase refer to ['/deploy/local'](https://github.com/pravega/pravega/blob/master/documentation/src/docs/deployment/deployment.md).
+Alternatively, to deploy it in a local environment, plase refer to ['/deploy/local'](https://github.com/neardata-eu/video-stream-indexing/tree/main/deploy/local/README.md).
 
 # Instructions
 
