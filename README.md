@@ -1,5 +1,5 @@
 # StreamSense
-Integration of Pravega and Milvus for NCT computer-assisted surgery use-case.
+A policy-driven semantic video search solution that exploits tiered storage in streaming systems.
 
 # Setup
 
